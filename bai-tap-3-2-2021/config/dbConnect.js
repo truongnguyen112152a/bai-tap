@@ -6,29 +6,29 @@ let postSchema = {
     title: String,
     comment: String
 }
-let port = mongoose.model("content", postSchema)
+let post = mongoose.model("content", postSchema)
 // Bài 1:
 function create() {
-    port.create({
+    post.create({
         content: "hello",
         title: "ahahaha",
         comment: "ezzezez"
     })
 }
-function find() {
-    port.find()
+function getAll() {
+    post.find()
     .then(data => console.log(data))
     .catch(err => console.log(err))
 }
-function print() {
-    port.find({
+function getById() {
+    post.find({
         _id: "601ccab10843a13a58d66a6f"
     })
     .then(data => console.log(data))
     .catch(err => console.log(err))
 }
-function uptodate() {
-    port.updateOne({
+function update() {
+    post.updateOne({
         _id: "601ccab10843a13a58d66a6f"
     },{
         content: "new hello"
@@ -52,7 +52,7 @@ function createUser() {
         school: "Nodemy4"  
     })
 }
-function findUser() {
+function getUser() {
     user.find({
         username: "Truong1",
         password: "8888"
@@ -67,7 +67,7 @@ function remove() {
     user.deleteOne({ _id : "601cdf674d7193132049f3c4" })
     .then(data => console.log(data))
 }
-function printUser() {
+function getLimitUser() {
     user.find()
     .limit(3)
     .then(data => console.log(data))
@@ -76,9 +76,7 @@ function printUser() {
 const express = require('express');
 const app = express();
 var bodyParser = require('body-parser')
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
 app.use(bodyParser.json())
 var insert = []
 app.post("/user/create", (req,res) => {
@@ -88,15 +86,15 @@ app.post("/user/create", (req,res) => {
         req.body.age,
         req.body.school
     ]
-        user.create({
-            username: insert[0],
-            password: insert[1],
-            age: insert[2],
-            school: "insert[3]"  
-        })
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
     res.json(insert)
+    user.create({
+        username: insert[0],
+        password: insert[1],
+        age: insert[2],
+        school: insert[3]  
+    })
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
 })
 app.post("/user/find", (req,res) => {
     return [
@@ -115,5 +113,3 @@ app.post("/user/find-limit", (req,res) => {
     ]
 })
 app.listen(3000,console.log(`running port 3000`))
-
-clientCreate()
