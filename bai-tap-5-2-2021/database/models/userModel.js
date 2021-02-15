@@ -5,6 +5,6 @@ let userSchema = {
     country: String,
     course: String
 }
-let user = mongoose.model("content", userSchema)
+let userModel = mongoose.model("content", userSchema)
 
-module.exports = user
+module.exports = userModel
