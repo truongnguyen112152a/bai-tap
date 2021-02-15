@@ -78,9 +78,10 @@ function searchTa() {
 function sortAge() {
     userModel.find({
 
-    }).then((data) => {
-        var newArr = data.sort((a,b) => b.age - a.age)
-        console.log(newArr)
+    })
+    .sort("age")
+    .then((data) => {
+        console.log(data);
     }).catch((err) => {
         console.log(err);
     });
@@ -214,4 +215,3 @@ function findPassword() {
         console.log(err);
     });
 }
-findPassword()
