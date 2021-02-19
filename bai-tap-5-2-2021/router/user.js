@@ -1,8 +1,8 @@
 const express = require('express')
-const routerUser = express.Router()
-const userControl = require('../controller/userControl')
+const router = express.Router()
+const userControl = require('../service/userService')
 
-routerUser.post('/create',(req,res) => {
+router.post('/',(req,res) => {
     var name = req.body.name
     var age = req.body.age
     var country = req.body.country
@@ -22,7 +22,7 @@ routerUser.post('/create',(req,res) => {
         res.json(`tạo thất bại ${name}`)
     })
 })
-routerUser.get('/search',(req,res) => {
+router.get('/',(req,res) => {
     var id = req.query.id
     var name = req.query.name
     var age = req.query.age
@@ -51,7 +51,7 @@ routerUser.get('/search',(req,res) => {
         console.log(err)
     })
 })
-routerUser.put('/update/:id',(req,res) => {
+router.put('/:id',(req,res) => {
     var id = req.params.id
     var name = req.body.name
     var age = req.body.age
@@ -80,7 +80,7 @@ routerUser.put('/update/:id',(req,res) => {
         console.log(err)
     })
 })
-routerUser.delete('/delete_one',(req,res) => {
+router.delete('/',(req,res) => {
     var id = req.query.id
     var name = req.query.name
     var age = req.query.age
@@ -109,7 +109,7 @@ routerUser.delete('/delete_one',(req,res) => {
         console.log(err)
     })
 })
-routerUser.delete('/delete_many',(req,res) => {
+router.delete('/',(req,res) => {
     var id = req.query.id
     var name = req.query.name
     var age = req.query.age
@@ -138,4 +138,4 @@ routerUser.delete('/delete_many',(req,res) => {
         console.log(err)
     })
 })
-module.exports = routerUser
+module.exports = router
