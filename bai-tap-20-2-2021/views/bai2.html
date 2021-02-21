@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
+    </script>
+    <style>
+        td {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <button type="button" id="btn" style="color:red;">
+                            Click
+                        </button>
+                    </td>
+                    <td><input type="text" name="importData" id="importData"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+    </form>
+</body>
+<script>
+    $("#btn").click(() => {
+        var importData = $("#importData").val()
+        $.ajax({
+            url: "/checkData",
+            method: "POST",
+            data: {
+                importData: importData,
+            }
+        }).then((data) => {
+            console.log(data)
+        }).catch((err) => {
+            console.log(err)
+        });
+    })
+</script>
+</html>
