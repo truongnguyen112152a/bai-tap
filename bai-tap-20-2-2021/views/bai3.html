@@ -48,10 +48,10 @@
                 password: password
             }
         }).then((data) => {
-            if(data.value === 1) {
+            if(!data.error) {
                 return window.location.href = 'http://localhost:3003/home'
             }
-            return console.log(data)
+            return console.log(data) // không console.log() => alert()
         }).catch((err) => {
             console.log(err)
         });

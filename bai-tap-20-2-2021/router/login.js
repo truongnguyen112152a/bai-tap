@@ -3,11 +3,11 @@ const addressUser = express.Router()
 const userService = require('../service/userService')
 
 addressUser.post('/',(req,res) => {
-    userService.exists(req.body)
+    userService.exists(req.body) // sửa lại điều kiện
     .then((data) => {
         if(data) {
             return res.json({
-                error: true,
+                error: false,
                 messenger: "Đăng nhập thành công",
                 value: 1
             })
@@ -19,7 +19,7 @@ addressUser.post('/',(req,res) => {
         })
     }).catch((err) => {
         res.json({
-            error: false,
+            error: true,
             messenger: "ERROR",
             value: err
         })

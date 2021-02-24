@@ -1,0 +1,10 @@
+- trang tổng hợp :
+    hiển thị danh sách người dùng
+    các đầu mục gồm STT,Email,User,Age
+    mỗi một người dùng có một nút bấm là xem chi tiết data
+    đầu trang có một nút tạo mới,nó sẽ tạo mới dữ liệu thông qua ô modal
+- trang chi tiết :
+    trang chi tiết gồm Email,User,Age,Phone,Password
+    mỗi data có thêm nút thay đổi data,nút xóa data
+    cuối trang có một nút back trang
+    khi thêm data thì số thứ tự tăng lên
